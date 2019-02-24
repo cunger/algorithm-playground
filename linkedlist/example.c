@@ -1,29 +1,40 @@
 #include <stdio.h>
+#include <assert.h>
 #include "linkedlist.h"
 
 int main() {
   linkedlist numbers = init(1);
 
   pretty_print(numbers);
-  printf("length: %d\n", length(numbers));
+  assert(length(numbers) == 1);
 
   add(2, numbers);
   add(3, numbers);
 
   pretty_print(numbers);
-  printf("length: %d\n", length(numbers));
+  assert(length(numbers) == 3);
 
-  printf("get(0): %d\n", get(0, numbers)->data);
-  printf("get(1): %d\n", get(1, numbers)->data);
-  printf("get(2): %d\n", get(2, numbers)->data);
+  assert(get(-1, numbers) == NULL);
+  assert(get(0, numbers)->data == 1);
+  assert(get(1, numbers)->data == 2);
+  assert(get(2, numbers)->data == 3);
+  assert(get(3, numbers) == NULL);
 
   insert_after(0, 4, numbers);
   insert_after(3, 5, numbers);
 
   pretty_print(numbers);
 
-  delete(1, numbers);
+  printf("delete(1)\n");
+  delete(1, &numbers);
+  pretty_print(numbers);
 
+  printf("delete(0)\n");
+  delete(0, &numbers);
+  pretty_print(numbers);
+
+  printf("delete(2)\n");
+  delete(2, &numbers);
   pretty_print(numbers);
 
   // Insertion and deletion at out-of-bounds index leaves list untouched.
@@ -31,7 +42,37 @@ int main() {
   insert_after(9, 0, numbers);
   pretty_print(numbers);
 
-  delete(8, numbers);
+  delete(8, &numbers);
+  pretty_print(numbers);
+
+  // Moving a node.
+
+  add(5, numbers);
+  add(9, numbers);
+  pretty_print(numbers);
+
+  printf("move(2,1)\n");
+  move(2, 1, &numbers);
+  pretty_print(numbers);
+
+  printf("move(1,1)\n");
+  move(1, 1, &numbers);
+  pretty_print(numbers);
+
+  printf("move(2,0)\n");
+  move(2, 0, &numbers);
+  pretty_print(numbers);
+
+  printf("move(3,1)\n");
+  move(3, 1, &numbers);
+  pretty_print(numbers);
+
+  printf("move(3,0)\n");
+  move(3, 0, &numbers);
+  pretty_print(numbers);
+
+  printf("move(0,3)\n");
+  move(0, 3, &numbers);
   pretty_print(numbers);
 
   // Clean up.

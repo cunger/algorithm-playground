@@ -24,6 +24,8 @@ node* last(linkedlist list) {
 }
 
 node* get(int index, linkedlist list) {
+  if (index < 0) return NULL;
+
   node* n = list;
 
   int i = 0;
@@ -57,16 +59,47 @@ void insert_after(int index, int element, linkedlist list) {
   node_before->next = new_node;
 }
 
-void delete(int index, linkedlist list) {
-  node* this_node   = get(index, list);
-  node* node_before = get(index - 1, list);
-  node* node_after  = get(index + 1, list);
+void delete(int index, linkedlist* list) {
+  if (index == 0) {
+    node* first_node = *list;
+    *list = (*list)->next;
+    free(first_node);
+    return;
+  }
+
+  node* this_node   = get(index, *list);
+  node* node_before = get(index - 1, *list);
+  node* node_after  = get(index + 1, *list);
 
   if (node_before == NULL) return;
 
   if (this_node != NULL) {
     free(this_node);
     node_before->next = node_after;
+  }
+}
+
+void move(int old_index, int new_index, linkedlist* list) {
+  if (new_index == old_index) return;
+
+  node* this_node  = get(old_index, *list);
+  node* new_after  = get(new_index, *list);
+  node* new_before = get(new_index - 1, *list);
+  node* old_after  = get(old_index + 1, *list);
+  node* old_before = get(old_index - 1, *list);
+
+  if (new_before == NULL) { // i.e. new_index == 0
+    *list = this_node;
+  } else {
+    new_before->next = this_node;
+  }
+
+  this_node->next  = new_after;
+
+  if (old_before == NULL) { // i.e. old_index == 0
+    *list = old_after;
+  } else {
+    old_before->next = old_after;
   }
 }
 

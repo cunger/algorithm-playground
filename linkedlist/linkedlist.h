@@ -34,7 +34,9 @@ void insert_after(int index, int element, linkedlist list);
 node* get(int index, linkedlist list);
 node* last(linkedlist list);
 
-void delete(int index, linkedlist list);
+void move(int old_index, int new_index, linkedlist* list);
+
+void delete(int index, linkedlist* list);
 void destroy(linkedlist* list);
 
 int length(linkedlist list);

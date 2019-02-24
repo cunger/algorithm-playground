@@ -1,0 +1,2 @@
+
+void sort(linkedlist* sequence);
