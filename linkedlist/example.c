@@ -2,27 +2,41 @@
 #include "linkedlist.h"
 
 int main() {
-  node third  = { 3, NULL };
-  node second = { 2, &third };
-  node first  = { 1, &second };
-
-  linkedlist numbers = &first;
+  linkedlist numbers = init(1);
 
   pretty_print(numbers);
   printf("length: %d\n", length(numbers));
 
-  linkedlist numbers_again = init(1);
+  add(2, numbers);
+  add(3, numbers);
 
-  pretty_print(numbers_again);
-  printf("length: %d\n", length(numbers_again));
+  pretty_print(numbers);
+  printf("length: %d\n", length(numbers));
 
-  add(&numbers_again, 2);
-  add(&numbers_again, 3);
+  printf("get(0): %d\n", get(0, numbers)->data);
+  printf("get(1): %d\n", get(1, numbers)->data);
+  printf("get(2): %d\n", get(2, numbers)->data);
 
-  pretty_print(numbers_again);
-  printf("length: %d\n", length(numbers_again));
+  insert_after(0, 4, numbers);
+  insert_after(3, 5, numbers);
 
-  destroy(&numbers_again);
+  pretty_print(numbers);
+
+  delete(1, numbers);
+
+  pretty_print(numbers);
+
+  // Insertion and deletion at out-of-bounds index leaves list untouched.
+
+  insert_after(9, 0, numbers);
+  pretty_print(numbers);
+
+  delete(8, numbers);
+  pretty_print(numbers);
+
+  // Clean up.
+
+  destroy(&numbers);
 
   return 0;
 }

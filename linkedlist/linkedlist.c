@@ -4,8 +4,8 @@
 
 #include "linkedlist.h"
 
-node * init(int element) {
-  node * new_node = malloc(sizeof(node));
+node* init(int element) {
+  node* new_node = malloc(sizeof(node));
   assert(new_node != NULL);
 
   new_node->data = element;
@@ -14,8 +14,8 @@ node * init(int element) {
   return new_node;
 }
 
-node * last(linkedlist list) {
-  node * n = list;
+node* last(linkedlist list) {
+  node* n = list;
   while (n->next) {
     n = n->next;
   }
@@ -23,15 +23,56 @@ node * last(linkedlist list) {
   return n;
 }
 
-void add(linkedlist * list, int element) {
-  node * new_node = init(element);
+node* get(int index, linkedlist list) {
+  node* n = list;
 
-  (last(*list))->next = new_node;
+  int i = 0;
+  while (i < index) {
+    if (!n->next) return NULL;
+
+    n = n->next;
+    i++;
+  }
+
+  return n;
 }
 
-void destroy(linkedlist * list) {
-  node * curr_node = *list;
-  node * next_node;
+void add(int element, linkedlist list) {
+  node* new_node = init(element);
+
+  (last(list))->next = new_node;
+}
+
+void insert_after(int index, int element, linkedlist list) {
+  node* node_before = get(index, list);
+  node* node_after  = get(index + 1, list);
+
+  if (node_before == NULL) return;
+
+  node* new_node = init(element);
+  if (node_after != NULL) {
+    new_node->next = node_after;
+  }
+
+  node_before->next = new_node;
+}
+
+void delete(int index, linkedlist list) {
+  node* this_node   = get(index, list);
+  node* node_before = get(index - 1, list);
+  node* node_after  = get(index + 1, list);
+
+  if (node_before == NULL) return;
+
+  if (this_node != NULL) {
+    free(this_node);
+    node_before->next = node_after;
+  }
+}
+
+void destroy(linkedlist* list) {
+  node* curr_node = *list;
+  node* next_node;
 
   while (curr_node->next) {
     next_node = curr_node->next;
