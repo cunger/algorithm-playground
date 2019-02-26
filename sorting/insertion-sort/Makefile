@@ -1,2 +1,2 @@
 build:
-	gcc -Wall -g ../../linkedlist/linkedlist.c sort.c example.c -o example
+	gcc -Wall -g sort.c example.c -o example
