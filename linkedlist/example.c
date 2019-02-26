@@ -79,6 +79,14 @@ int main() {
 
   destroy(&numbers);
 
+  // Creating a linked list from variadic function.
+
+  linkedlist var = list(4, 23, 42, 47, 83);
+
+  pretty_print(var);
+
+  destroy(&var);
+
   // Insertion sort for linked lists.
 
   // Edge case: list with only one element is already sorted.

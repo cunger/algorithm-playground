@@ -1,8 +1,26 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdarg.h>
 #include <assert.h>
 
 #include "linkedlist.h"
+
+linkedlist list(int size, int element, ...) {
+  node* head = init(element);
+
+  va_list tail;
+  va_start(tail, element);
+
+  int i;
+  for (i = 0; i < size - 1; i++) {
+    int next_element = va_arg(tail, int);
+    add(next_element, head);
+  }
+
+  va_end(tail);
+
+  return head;
+}
 
 node* init(int element) {
   node* new_node = malloc(sizeof(node));

@@ -26,8 +26,9 @@ struct node {
 typedef struct node node;
 typedef node* linkedlist;
 
-node* init(int element);
+linkedlist list(int size, int element, ...);
 
+node* init(int element);
 void add(int element, linkedlist list);
 void insert_after(int index, int element, linkedlist list);
 
