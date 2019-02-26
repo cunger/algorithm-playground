@@ -42,3 +42,5 @@ void destroy(linkedlist* list);
 int length(linkedlist list);
 
 void pretty_print(linkedlist list);
+
+void sort(linkedlist* sequence);

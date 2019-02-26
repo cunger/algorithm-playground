@@ -79,5 +79,44 @@ int main() {
 
   destroy(&numbers);
 
+  // Insertion sort for linked lists.
+
+  // Edge case: list with only one element is already sorted.
+
+  linkedlist singleton = init(1);
+
+  pretty_print(singleton);
+  sort(&singleton);
+  pretty_print(singleton);
+
+  destroy(&singleton);
+
+  // Simple example.
+
+  linkedlist simple = init(1);
+  add(3, simple);
+  add(2, simple);
+
+  pretty_print(simple);
+  sort(&simple);
+  pretty_print(simple);
+
+  destroy(&simple);
+
+  // Intricate example, where sorting needs to insert either at the beginning
+  // or end of the subsequence.
+
+  linkedlist intricate = init(5);
+  add(2, intricate);
+  add(0, intricate);
+  add(9, intricate);
+  add(3, intricate);
+
+  pretty_print(intricate);
+  sort(&intricate);
+  pretty_print(intricate);
+
+  destroy(&intricate);
+
   return 0;
 }
