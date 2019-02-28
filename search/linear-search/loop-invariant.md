@@ -26,8 +26,8 @@ position `i-1`, i.e.
 LINEAR-SEARCH(A, v) = LINEAR-SEARCH(A[i-1...A.length])
 ````
 If `v` occurred at `A[i-1]`, the loop would have terminated. Since the loop
-is still running, the value does not occur at `A[i-1]`, and thus the invariant
-also holds for `A[i-1...A.length]`.
+is still running, `v` does not occur at `A[i-1]`, and thus the invariant
+also holds for `A[i...A.length]`.
 
 _Termination:_ The loop terminates at position `i` when either `A[i]` equals `v`,
 or `i` is greater than the length of `A`.
