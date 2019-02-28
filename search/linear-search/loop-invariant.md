@@ -12,17 +12,22 @@ for i = 1 to A.length
 return -1
 ```
 
-**Loop invariant:** At each iteration of the loop at position `i`,
-the subsequence `A' = A[1, i - 1]` does not contain `v`.
+**Loop invariant:** For every iteration `i`, it holds that
+```
+LINEAR-SEARCH(A, v) = LINEAR-SEARCH(A[i...A.length], v)
+```
 
-_Initialization:_ At the first iteration with `i = 1`, `A'` is empty,
-thus it does not contain `v`.
+_Initialization:_ Before the first iteration `i = 1`, `A = A[1...A.length]`,
+so the invariant is trivially true.
 
 _Maintenance:_ At each subsequent position `i`: The loop invariant is true at
-position `i - 1`, i.e. `v` does not occur in `A[1, i - 2]`. If `v` occurred at
-`A[i - 1]`, the loop would have terminated. Since the loop is still running,
-the value does not occur at `A[i - 1]`, and thus not in `A[1, i - 1]`.
+position `i-1`, i.e.
+```
+LINEAR-SEARCH(A, v) = LINEAR-SEARCH(A[i-1...A.length])
+````
+If `v` occurred at `A[i-1]`, the loop would have terminated. Since the loop
+is still running, the value does not occur at `A[i-1]`, and thus the invariant
+also holds for `A[i-1...A.length]`.
 
-_Termination:_ The loop terminates at position `i` where either `A[i]` equals
-the `v`, in which case `i` is the first occurrence of `v` and is returned,
-or `i` is greater than the length of `A`, in which case `-1` is returned.
+_Termination:_ The loop terminates at position `i` when either `A[i]` equals `v`,
+or `i` is greater than the length of `A`.
