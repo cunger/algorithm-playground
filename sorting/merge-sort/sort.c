@@ -21,7 +21,7 @@ void merge_sort(int sequence[], int i, int k, comparison compare) {
 
 void merge(int sequence[], int i, int j, int k, comparison compare) {
   /* Temporary array into which elements from index i to k
-  will be inserted in order. */
+     will be inserted in order. */
   int sorted[(k - i) + 1];
   int index = 0;
 
@@ -43,15 +43,18 @@ void merge(int sequence[], int i, int j, int k, comparison compare) {
     index++;
   }
 
-  /* Copy all remaining elements from what subarray has elements left. */
+  /* If left subarray has elements left, copy remaining elements. */
   while (left <= j) {
     sorted[index] = sequence[left];
+
     left++;
     index++;
   }
 
+  /* If right subarray has elements left, copy remaining elements. */
   while (right <= k) {
     sorted[index] = sequence[right];
+
     right++;
     index++;
   }
@@ -61,16 +64,4 @@ void merge(int sequence[], int i, int j, int k, comparison compare) {
   for (index = i; index <= k; index++) {
     sequence[index] = sorted[index - i];
   }
-}
-
-int increasing(int x, int y) {
-  if (x < y) return -1;
-  if (x > y) return 1;
-  return 0;
-}
-
-int decreasing(int x, int y) {
-  if (x > y) return -1;
-  if (x < y) return 1;
-  return 0;
 }

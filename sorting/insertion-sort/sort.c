@@ -14,15 +14,3 @@ void sort(int sequence[], int size, comparison compare) {
     sequence[j + 1] = element;
   }
 }
-
-int increasing(int x, int y) {
-  if (x < y) return -1;
-  if (x > y) return 1;
-  return 0;
-}
-
-int decreasing(int x, int y) {
-  if (x > y) return -1;
-  if (x < y) return 1;
-  return 0;
-}
