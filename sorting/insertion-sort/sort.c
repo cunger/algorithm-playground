@@ -1,13 +1,5 @@
 #include "sort.h"
 
-void sort_inc(int sequence[], int size) {
-  sort(sequence, size, increasing);
-}
-
-void sort_dec(int sequence[], int size) {
-  sort(sequence, size, decreasing);
-}
-
 void sort(int sequence[], int size, comparison compare) {
   int i;
   for (i = 1; i < size; i++) {

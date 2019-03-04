@@ -7,10 +7,10 @@ int main(void) {
 
   printf("    Unsorted: {%d, %d, %d, %d, %d}\n", arr[0], arr[1], arr[2], arr[3], arr[4]);
 
-  sort_inc(arr, 5);
+  sort(arr, 5, increasing);
   printf("Sorted (inc): {%d, %d, %d, %d, %d}\n", arr[0], arr[1], arr[2], arr[3], arr[4]);
 
-  sort_dec(arr, 5);
+  sort(arr, 5, decreasing);
   printf("Sorted (dec): {%d, %d, %d, %d, %d}\n", arr[0], arr[1], arr[2], arr[3], arr[4]);
 
   return 0;
