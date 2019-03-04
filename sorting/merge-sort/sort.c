@@ -46,7 +46,6 @@ void merge(int sequence[], int i, int j, int k, comparison compare) {
   /* If left subarray has elements left, copy remaining elements. */
   while (left <= j) {
     sorted[index] = sequence[left];
-
     left++;
     index++;
   }
@@ -54,7 +53,6 @@ void merge(int sequence[], int i, int j, int k, comparison compare) {
   /* If right subarray has elements left, copy remaining elements. */
   while (right <= k) {
     sorted[index] = sequence[right];
-
     right++;
     index++;
   }
