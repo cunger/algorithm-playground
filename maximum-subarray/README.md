@@ -1,18 +1,21 @@
+# Maximum subarray
+
 ## Problem
 
-Given an array of integers, find a contiguous subarray with the largest sum of all its elements.
+Given an array of integers, find the maximum sum of elements of a contiguous subarray.
 
 ## Examples
 
-* `[ -2, 4, -1, 2, 1, -5 ] -> [ 4, -2, 2, 1 ]`
-* `[ 1, -2, 3 ] -> [ 3 ]`
-* Edge case: all negatives: `[ -1, -2, -3 ] -> []`
-* Edge case: all positives: `[ 1, 2, 3, 4 ] -> [ 1, 2, 3, 4 ]`
-* Edge case: empty array: `[] -> []`
+* `[ 1, -2, 3 ] -> 3` (with `[ 3 ]` the subarray)
+* `[ -2, 4, -1, 2, 1, -5 ] -> 6` (with `[ 4, -1, 2, 1 ]` the subarray)
+* `[ -2, -3, 4, -1, -2, 1, 5, -3 ]` (with `[ 4, -1, -2, 1, 5 ]` the subarray)
+* Edge case: empty array: `[] -> 0` (with `[]` the subarray)
+* Edge case: all negatives: `[ -1, -2, -3 ] -> 0` (with `[]` the subarray)
+* Edge case: all positives: `[ 1, 2, 3, 4 ] -> 10` (with `[ 1, 2, 3, 4 ]` the subarray)
 
 ## Approaches
 
-### Divide and conquer (`O(n log n)`)
+### Divide and conquer (_O(n log n)_)
 
 - Divide array into two subarrays.
 - Possibilities:
@@ -20,4 +23,18 @@ Given an array of integers, find a contiguous subarray with the largest sum of a
   - Maximum subarray crosses the middle point -> Needs to be found non-recursively
 - Find those three subarrays and pick the maximum one.
 
-### Kadane (`O(n)`)
+### Kadane (_O(n)_)
+
+## Compile and run
+
+Running the divide-and-conquer algorithm on the examples:
+```
+$ make divide-and-conquer
+$ ./example
+```
+
+Running Kandane's algorithm on the examples:
+```
+$ make kandane
+$ ./example
+```
