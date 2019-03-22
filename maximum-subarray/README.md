@@ -25,6 +25,10 @@ Given an array of integers, find the maximum sum of elements of a contiguous sub
 
 ### Kadane (_O(n)_)
 
+- Pick each index as end index.
+- Determine the maximum sum until that end index: add the element at that index and reset to zero whenever the sum gets negative (this works like moving the left index of the maximum subarray to the right).
+- Update and memorize the greatest of those maximum sums.
+
 ## Compile and run
 
 Running the divide-and-conquer algorithm on the examples:
