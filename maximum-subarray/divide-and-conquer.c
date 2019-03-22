@@ -1,9 +1,5 @@
 #include "maximum-subarray.h"
 
-int max_of(int i1, int i2) {
-  return (i1 > i2) ? i1 : i2;
-}
-
 int find_max_cross_sum(const int array[], int start_index, int center_index, int end_index);
 
 int max_subarray(const int array[], int start_index, int end_index) {

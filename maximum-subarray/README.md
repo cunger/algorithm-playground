@@ -21,7 +21,7 @@ Given an array of integers, find the maximum sum of elements of a contiguous sub
 - Possibilities:
   - Maximum subarray is entirely in left or right subarray -> Instance of the same problem
   - Maximum subarray crosses the middle point -> Needs to be found non-recursively
-- Find those three subarrays and pick the maximum one.
+- Find the maximum sums of those three subarrays and pick the greatest one.
 
 ### Kadane (_O(n)_)
 

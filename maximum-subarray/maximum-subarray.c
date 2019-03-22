@@ -9,3 +9,7 @@ int sum(const int array[], int start_index, int end_index) {
 
   return sum;
 }
+
+int max_of(int i1, int i2) {
+  return (i1 > i2) ? i1 : i2;
+}
