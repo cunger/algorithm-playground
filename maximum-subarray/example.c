@@ -16,7 +16,7 @@ int main(void) {
   assert(sum(example2, 0, -1) == 0);
 
   /* Checking that max_subarray() works correctly. */
-  
+
   assert(max_subarray(example1, 0, 2) == 3);
   assert(max_subarray(example2, 0, 5) == 6);
   assert(max_subarray(example3, 0, 7) == 7);
@@ -30,7 +30,7 @@ int main(void) {
   int negatives1[3] = { -1, -2, -3 };
   int negatives2[1] = { -1 };
 
-  assert(max_subarray(negatives1, 0, 3) == 0);
+  assert(max_subarray(negatives1, 0, 2) == 0);
   assert(max_subarray(negatives2, 0, 0) == 0);
 
   return 0;
