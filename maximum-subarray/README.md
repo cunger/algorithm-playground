@@ -37,8 +37,8 @@ $ make divide-and-conquer
 $ ./example
 ```
 
-Running Kandane's algorithm on the examples:
+Running Kadane's algorithm on the examples:
 ```
-$ make kandane
+$ make kadane
 $ ./example
 ```
